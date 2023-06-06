@@ -1,0 +1,36 @@
+{% extends "myapp/layout.html" %}
+
+
+{% block title %}
+Alumnos
+{% endblock %}
+
+{% block content %}
+<table class="tablas">
+    <thead>
+        <tr>
+            <th>nombre</th>            
+            <th>email</th>
+            <th>telefono</th>
+            <th>DNI</th>
+            <th>cursos</th>            
+        </tr>
+    </thead>
+    {% for alumno in alumnos %}
+    <tr>
+        
+        <td><a href='{% url "alumno" alumno.id %}'>{{ alumno.nombre }}</a></td>
+        <td>{{ alumno.email }}</td>
+        <td>{{ alumno.telefono }}</td>
+        <td>{{ alumno.dni }}</td>
+        <td>{% for curso in alumno.cursos.all %}
+            <a href='{% url "curso" curso.id %}'>{{ curso.nombre }}<br></a> 
+            {% empty %}
+                No hay cursos asignados
+            {% endfor %}</td>
+
+        
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

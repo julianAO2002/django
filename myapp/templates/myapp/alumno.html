@@ -1,0 +1,27 @@
+{% extends "myapp/layout.html" %}
+{% load static %}
+
+
+{% block title %}
+{{ alumno.nombre }}
+{% endblock %}
+
+{% block content %}
+<p>
+    {% if alumno %}
+<h1>Alumno: {{ alumno.nombre }}</h1>
+<h3>Cursos: </h3>
+<ul>
+    
+    {% for curso in alumno.cursos.all %}
+    <li><a href='{%url "curso" curso.id %}'>{{ curso.nombre }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron profesor con el nombre proporcionado.</p>
+{% endif %}
+
+</p>
+
+
+{% endblock %}

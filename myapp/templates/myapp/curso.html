@@ -1,0 +1,19 @@
+{% extends "myapp/layout.html" %}
+{% load static %}
+
+
+{% block title %}
+{{ curso.nombre }}
+{% endblock %}
+
+{% block content %}
+<p>
+   <h1>{{ curso.nombre }}</h1>
+   <h3>profesor: {{curso.profesor}}</h3>  
+   <h3>inscriptos: {{ curso.inscriptos}} </h3> 
+   
+
+</p>
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "myapp/layout.html" %}
+
+
+{% block title %}
+Profesores
+{% endblock %}
+
+{% block content %}
+<table class="tablas">
+    <thead>
+        <tr>
+            <th>nombre</th>            
+            <th>email</th>
+            <th>telefono</th>
+            <th>CUIT</th>
+            <th>monotributista</th>
+            <th>cursos</th>            
+        </tr>
+    </thead>
+    {% for profesor in profesores %}
+    <tr>
+        
+        <td><a href='{% url "profesor" profesor.id %}'>{{ profesor.nombre }}</a></td>
+        <td>{{ profesor.email }}</td>
+        <td>{{ profesor.telefono }}</td>
+        <td>{{ profesor.cuit }}</td>
+        <td>{{ profesor.monotributista}}</td>
+        <td>{% for curso in profesor.cursos_dictados.all %}
+            <a href='{% url "curso" curso.id %}'>{{ curso.nombre }}<br></a> 
+            {% empty %}
+                No hay cursos asignados
+            {% endfor %}</td>
+
+        
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

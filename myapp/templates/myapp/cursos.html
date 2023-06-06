@@ -1,0 +1,27 @@
+{% extends "myapp/layout.html" %}
+
+
+{% block title %}
+Lista de alumnos
+{% endblock %}
+
+{% block content %}
+<table class="tablas">
+    <thead>
+        <tr>
+            <th>Curso</th>
+            <th>Inscriptos</th>
+            <th>Turno</th>
+            <th>Profesor</th>
+        </tr>
+    </thead>
+    {% for curso in cursos %}
+    <tr>
+        <td><a href='{% url "curso" curso.id %}'>{{ curso.nombre }}</a></td>
+        <td>{{ curso.inscriptos }}</td>
+        <td>{{ curso.get_turno_display }}</td>
+        <td>{{ curso.profesor }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

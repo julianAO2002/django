@@ -1,0 +1,14 @@
+{% extends "myapp/layout.html" %}
+
+{% block title %}
+Nuevo curso
+{% endblock %}
+
+{% block content %}
+<h1>Nuevo curso</h1>
+<form method="post">
+ {% csrf_token %}
+ {{ form.as_p }}
+ <input type="submit" value="Añadir curso">
+</form>
+{%endblock%}

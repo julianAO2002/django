@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi aplicación de Django{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href='{% static "myapp/styles.css" %}'>
+        
+    
+</head>
+
+<body>
+    <nav>
+        <div id="logoNav">
+            <a href='{% url "index" %}'><img src='{% static "\myapp\django.png" %}'/></a>
+        </div>
+        <div id="links">            
+            <div class="dropdown">
+                <button class="dropbtn">Cursos</button>
+                <div class="dropdown-content">
+                    <a href='{% url "cursos" %}'>Ver cursos</a>
+                    <a href='{% url "nuevo_curso" %}'>Agregar curso</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Profesores</button>
+                <div class="dropdown-content">
+                    <a href='{% url "profesores" %}'>Ver profesores</a>
+                    <a href='{% url "nuevo_profesor" %}'>Agregar profesor</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Alumnos</button>
+                <div class="dropdown-content">
+                    <a href='{% url "alumnos" %}'>Ver alumnos</a>
+                    <a href='{% url "nuevo_alumno" %}'>Agregar alumno</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+    <footer>
+        <small>&copy; Mi aplicación de Django</small>
+    </footer>
+</body>
+
+</html>
